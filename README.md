@@ -1,11 +1,11 @@
 
-# Javey Scripterson
+# JSquizzy
 
 ## Overview
 
-Remembering all these obscure JavaScript concepts before the exam is waaaaaay too difficult (who the heck thought of making typeof NaN actually a number???). Also, trying to dig through your books/slides to find that kind of stuff while stressed is just a recipe for disaster. Soo... that's where Javey Scripterson comes in!
+Remembering all these obscure JavaScript concepts before the exam is waaaaaay too difficult (who the heck thought of making typeof NaN actually a number???). Also, trying to dig through your books/slides to find that kind of stuff while stressed is just a recipe for disaster. Soo... that's where JSquizzy comes in!
 
-Javey Scripterson is a web app that will allow users to review all the important and hard to remember concepts about Javascript with relative ease. For every concept, there will be a "flashcard" where the user can input an answer (multiple choice or through a console-like feature).
+JSquizzy is a web app that will allow users to review all the important and hard to remember concepts about Javascript with relative ease. For every concept, there will be a "flashcard" where the user can input an answer (multiple choice or through a console-like feature).
 
 
 ## Data Model
