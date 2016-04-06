@@ -52,12 +52,12 @@ var Item = new mongoose.Schema({
 ```
 
 ## Wireframes
-I drew them but I have trouble uploading it for some reason. I'll have it figured out by the next milestone.
+I drew them but I have trouble uploading it for some reason. I'll have it figured out by the next milestone. But imagine a simple facebook auth that looks like this:
 
-But imagine a simple facebook auth that looks like this:
+
 ![list create](documentation/userauth.png)
 
-And then a button that takes you to play the game
+And then a button that takes you to take the quiz
 
 ## Research Topics
 
