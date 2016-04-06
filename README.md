@@ -1,32 +1,32 @@
 
-# (Name of your project) Shoppy Shoperson
+# Javey Scripterson
 
 ## Overview
 
-(Write a brief one or two paragraph, high-level description of your project here) Remembering what to buy at the grocery store is waaaaay too difficult. Also, shopping for groceries when you're hungry leads to regrettable purchases. Sooo... that's where Shoppy Shoperson comes in!
+Remembering all these obscure JavaScript concepts before the exam is waaaaaay too difficult (who the heck thought of making typeof NaN actually a number???). Also, trying to dig through your books/slides to find that kind of stuff while stressed is just a recipe for disaster. Soo... that's where Javey Scripterson comes in!
 
-Shoppy Shoperson is a web app that will allow users to keep track of multiple grocery lists. Users can register and login. Once they're logged in, they can create or view their grocery list. For every list that they have, they can add items to the list or cross of items.
+Javey Scripterson is a web app that will allow users to review all the important and hard to remember concepts about Javascript with relative ease. For every concept, there will be a "flashcard" where the user can input an answer (multiple choice or through a console-like feature).
 
 
 ## Data Model
 
-(Describe the documents that you'll be storing - assuming that you're using a document based NoSQL database, like mongoose ... this can be in the form of commented plain JavaScript objects or an _actual_ Mongoose schema)
+Minimally, we'll have to store questions, answers, users, and comments stored in MongoDB
 
-Minimally, we'll have to store Users, Lists and Items
+* correct questions/answers of each user are kept track
+* comments are stored and then displayed in a list/discussion board-esque fashion
 
-* users can have multiple lists
-* each list can have multiple items
 
 First draft schema:
 
 ```javascript
 // users
-// * our site requires authentication...
-// * so users have a username and password
-// * they also can have 0 or more lists
+// * our site will have an optional user authentication
+// * so users will voluntarily have a username and password
+// * logged users will be able to be able to track progress
+// * (and maybe add to discussion board)
 var User = new mongoose.Schema({
   // username, password provided by plugin
-  lists:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'List' }]
+  score:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'score' }]
 });
 
 // an item (or group of the same items) in a grocery list
