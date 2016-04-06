@@ -29,10 +29,8 @@ var User = new mongoose.Schema({
   score:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'score' }]
 });
 
-// an item (or group of the same items) in a grocery list
-// * includes the quantity of this item (multiple of the same item does not 
-//   require additional Item documents; just increase the quantity!)
-// * items in a list can be crossed off
+// a list of flashcards that the user will go through
+// as user gets a correct one, they are "checked" off the list
 var Item = new mongoose.Schema({
 	name: {type: String, required: true},
 	quantity: {type: Number, min: 1, required: true},
@@ -41,39 +39,36 @@ var Item = new mongoose.Schema({
 	_id: true
 });
 
-// a grocery list
-// * each list must have a related user
-// * a list can have 0 or more items
-var List = new mongoose.Schema({
+// a flashcard
+// * each flashcard has a question and answer
+var Item = new mongoose.Schema({
   user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
-  name: {type: String, required: true},
+  question: {type: String, required: true},
 	createdAt: {type: Date, required: true},
-	items: [Item]
+	answer: {type: String, required: true},
 });
+
+// more will probably be added later as seen fit
 ```
 
 ## Wireframes
+I drew them but I have trouble uploading it for some reason. I'll have it figured out by the next milestone.
 
-![list create](documentation/list-create.png)
+But imagine a simple facebook auth that looks like this:
+![list create](documentation/userauth.png)
 
-## Reserach Topics
+And then a button that takes you to play the game
 
+## Research Topics
 
-
+** THESE ARE NOT FINALIZED **
 * (3 points) Integrate user authentication
-    * I'm going to be using passport for user authentication
-    * And account has been made for testing; I'll email you the password
-    * see <code>cs.nyu.edu/~jversoza/ait-final/register</code> for register page
-    * see <code>cs.nyu.edu/~jversoza/ait-final/login</code> for login page
-* (2 points) Perform client side form validation using a JavaScript library
-    * see <code>cs.nyu.edu/~jversoza/ait-final/my-form</code>
-    * if you put in a number that's greater than 5, an error message will appear in the dom
-* (2 points) use awesome js library that i found
-    * the library does...
-    * you can see it working in these pages:
-        * link 1
-        * link 2
-* ... for total of 6 points 
-    * additional points of research will make up for research topics that did not get full credit
-    * but won't count for extra credit
+    * Will use FB Connect
+    * Probably I can find documentation somewhere.
+* (3 points) Automated functional testing for all of your routes using any of the following:
+    * Will be using Selenium to run unit testing
+* (1 point) Use a CSS framework throughout your site, use a reasonable of customization of the framework (don't just use stock Bootstrap - minimally configure a theme):
+    * Probably will use Foundation
+* ... for total of 7 points 
+    * Again I will likely update this as the next milestone comes and I work more on this.
 
