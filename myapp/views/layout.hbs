@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+  	<div>
+	{{#if user}}
+	Logged in as {{user.username}}
+	{{/if}}
+	</div>
+    {{{body}}}
+  </body>
+</html>
