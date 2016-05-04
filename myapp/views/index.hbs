@@ -1,8 +1,10 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>JSquizzy</h1>
+<p>Need to brush up on JavaScript trivia before an exam or interview? You're at the right place! </p>
 
 {{#if user}}
-Hi {{user.username}}, thanks for logging in :). If you want to take the quiz, click <a href="questions">this link</a>. Otherwise, you can add stuff to the question bank <a href="add">here</a>
+<p>Hi {{user.username}}, thanks for logging in :). </p>
+<p>If you want to take the quiz, click <a href="questions">this link</a>. </p>
+<p>Otherwise, you can add stuff to the question bank <a href="add">here.</a> </p>
 {{else}}
 <a href="register">register</a> or <a href="login">login</a> 
 {{/if}}

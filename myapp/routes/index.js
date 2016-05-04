@@ -12,10 +12,6 @@ var Question = mongoose.model('Question');
 var validator = require('express-validator');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {title: 'JSquizzy'});
-});
-
-router.get('/', function(req, res) {
   res.render('index');
 });
 
@@ -33,7 +29,7 @@ router.post('/login', function(req,res,next) {
       // NOTE: using this version of authenticate requires us to
       // call login manually
       req.logIn(user, function(err) {
-        res.redirect('/questions');
+        res.redirect('/');
       });
     } else {
       res.render('login', {message:'Your login or password is incorrect.'});
@@ -58,10 +54,15 @@ router.post('/register', function(req, res) {
       // NOTE: once you've registered, you should be logged in automatically
       // ...so call authenticate if there's no error
       passport.authenticate('local')(req, res, function() {
-        res.redirect('/questions');
+        res.redirect('/');
       });
     }
   });   
+});
+
+router.get('/logout', function(req, res) {
+    req.logOut();
+    res.redirect('/');
 });
 
 
