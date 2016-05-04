@@ -6,11 +6,12 @@ var UserSchema = new mongoose.Schema({ });
 
 
 var Question = new mongoose.Schema({
-	title: String,
-	answers: {
-		correct: String,
-		incorrect: [String] },
-	entered: {type: Date, default: Date.now}
+	title: String,	
+	choice1: String,
+	choice2: String,
+	choice3: String,
+	choice4: String,
+	correct: String
 });
 var Score = new mongoose.Schema({
     username: String,

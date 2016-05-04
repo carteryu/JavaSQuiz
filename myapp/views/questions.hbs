@@ -2,6 +2,13 @@
 
 Displaying questions from database:
 
-{{#each allquestions}}
-    {{allquestions.title}}
+<div class = "questionbox">
+{{#each questions}}
+	<br>
+    Question: {{title}}
+    <div> Choice1: {{choice1}} </div>
+    <div> Choice2: {{choice2}} </div>
+    <div> Choice3: {{choice3}} </div>
+    <div> Choice4: {{choice4}} </div>
 {{/each}}
+</div>

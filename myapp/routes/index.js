@@ -69,7 +69,7 @@ router.get('/logout', function(req, res) {
 
 router.get('/questions', function(req,res,next){
 	Question.find(function(err,allquestions,count){
-		res.render('questions', allquestions);
+		res.render('questions', {questions : allquestions});
 	})
 
 });
