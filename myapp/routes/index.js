@@ -71,26 +71,33 @@ router.get('/questions', function(req,res,next){
 	})
 });
 
+
 router.post('/questions', function(req,res,next){
   var answer = req.body.answer;
   var id = req.body.id;
   console.log(answer);
-  res.redirect('questions')
+  console.log(id);
+  res.redirect('questions');
 });
 
 router.get('/add', function(req,res,next){
 	res.render('add');
 });
 
+function addQuestion(question, answer, explaination) {
+  var q = new Question({
+    title:question,
+    answer:answer,
+    explaination:explaination
+  });
+  return q;
+}
+
 router.post('/add', function(req, res, next){
     var question = req.body.question;
     var answer = req.body.answer;
     var explaination = req.body.explaination;
-    var q = new Question({
-      title:question,
-      answer:answer,
-      explaination:explaination
-    });
+    var q = addQuestion(question, answer, explaination);
     q.save(function(err,list,count){
       res.redirect(303, 'add');
     })
@@ -99,3 +106,5 @@ router.post('/add', function(req, res, next){
 
 
 module.exports = router;
+module.exports.addQuestion = addQuestion;
+

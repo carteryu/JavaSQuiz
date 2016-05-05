@@ -3,11 +3,11 @@ Displaying questions from database:
 <div class = "questionbox">
 {{#each questions}}
 	<br>
-    <form action="questions" method="POST">
+    <form action="/questions" method="POST">
     Question: {{title}}
     <div class = "answer"> 
     	Answer: <input type="text" placeholder="Type answer here!" name="answer"/> 
-    	<input type="hidden" name="{{_id}}">
+    	<input type="hidden" name="id" value = {{_id}}>
     	<input type="submit"/> 
     </div>
    </form>
