@@ -7,11 +7,8 @@ var UserSchema = new mongoose.Schema({ });
 
 var Question = new mongoose.Schema({
 	title: String,	
-	choice1: String,
-	choice2: String,
-	choice3: String,
-	choice4: String,
-	correct: String
+	answer: String,
+	explaination: String
 });
 var Score = new mongoose.Schema({
     username: String,
@@ -19,7 +16,7 @@ var Score = new mongoose.Schema({
 	date: {type: Date, default: Date.now},
 });
 
-Question.plugin(URLSlugs('title'));
+// Question.plugin(URLSlugs('title'));
 UserSchema.plugin(passportLocalMongoose);
 
 mongoose.model('User', UserSchema);

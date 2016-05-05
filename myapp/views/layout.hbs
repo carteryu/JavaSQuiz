@@ -6,9 +6,11 @@
     <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  	<div>
+  <div>
+
+  <div>
 	{{#if user}}
-	Welcome {{user.username}} | <a href="logout">(Log out)</a> 
+	  Welcome {{user.username}}! | <a href="logout">Log out</a> | <a href= "/"> Home </a> | <a href = "add"> Add Questions </a> | <a href = "questions"> Take the quiz! </a>
 	{{/if}}
 	</div>
     {{{body}}}

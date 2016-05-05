@@ -1,14 +1,15 @@
-
-
 Displaying questions from database:
 
 <div class = "questionbox">
 {{#each questions}}
 	<br>
+    <form action="questions" method="POST">
     Question: {{title}}
-    <div> Choice1: {{choice1}} </div>
-    <div> Choice2: {{choice2}} </div>
-    <div> Choice3: {{choice3}} </div>
-    <div> Choice4: {{choice4}} </div>
+    <div class = "answer"> 
+    	Answer: <input type="text" placeholder="Type answer here!" name="answer"/> 
+    	<input type="hidden" name="{{_id}}">
+    	<input type="submit"/> 
+    </div>
+   </form>
 {{/each}}
 </div>

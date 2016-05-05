@@ -6,7 +6,6 @@ var passport = require('passport');
 
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-
 var Question = mongoose.model('Question');
 
 var validator = require('express-validator');
@@ -66,12 +65,17 @@ router.get('/logout', function(req, res) {
 });
 
 
-
 router.get('/questions', function(req,res,next){
 	Question.find(function(err,allquestions,count){
 		res.render('questions', {questions : allquestions});
 	})
+});
 
+router.post('/questions', function(req,res,next){
+  var answer = req.body.answer;
+  var id = req.body.id;
+  console.log(answer);
+  res.redirect('questions')
 });
 
 router.get('/add', function(req,res,next){
@@ -79,9 +83,17 @@ router.get('/add', function(req,res,next){
 });
 
 router.post('/add', function(req, res, next){
-    req.body.question = question;
-    req.body.answer = answer;
-    //save question and answer here
+    var question = req.body.question;
+    var answer = req.body.answer;
+    var explaination = req.body.explaination;
+    var q = new Question({
+      title:question,
+      answer:answer,
+      explaination:explaination
+    });
+    q.save(function(err,list,count){
+      res.redirect(303, 'add');
+    })
 });
 
 
