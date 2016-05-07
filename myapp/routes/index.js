@@ -13,6 +13,7 @@ var Score = mongoose.model('Score');
 var validator = require('express-validator');
 var un = ""
 
+
 router.get('/', function(req, res, next) {
   res.render('index');
 });
@@ -95,7 +96,7 @@ router.get('/add', function(req,res,next){
 	res.render('add');
 });
 
-//separating this for testing purposes
+//testing this function to see if we can properly add to database
 function addQuestion(question, answer, explaination) {
   var q = new Question({
     title:question,
@@ -129,13 +130,18 @@ router.get('/api/questions', function(req,res){
   })
 });
 
-
+//testing this function to see if res.json gives us what we want.
+function matchID(id, callback) {
+  Question.findOne({'_id' : id}, function(err,question,count){
+    callback(question);
+  });
+};
 //display the one filtered question
 router.get('/api/question', function(req,res){
   var id = req.query.id;
-  Question.findOne({'_id' : id}, function(err,question,count){
-    res.json(question);
-  })
+  matchID(id, function(questions) {
+    res.json(questions);
+  });
 });
 
 // router.post('/api/question', function(req,res){
@@ -151,7 +157,7 @@ router.get('/api/question', function(req,res){
 
 
 
-
 module.exports = router;
 module.exports.addQuestion = addQuestion;
+module.exports.matchID = matchID;
 

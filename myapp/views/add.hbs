@@ -1,10 +1,11 @@
 <h2> Adding a question</h2>
 <form method="POST" action="/add">
 	
-	Add a question: <input type = "text" name = "question"/>
-	Add an answer: <input type = "text" name = "answer"/>
-	Add an explaination <input type = "text" name = "explaination"/>
-	<input type = "submit" value = "Submit to database!"/>
+	<div> Add a question: <input type = "text" name = "question" required autofocus/> </div>
+	<div> Add an answer: <input type = "text" name = "answer" required autofocus/> </div>
+	<div> Add an explaination <input type = "text" name = "explaination" required autofocus/> </div>
+	<br>
+	<div> <input type = "submit" value = "Submit to database!"/> </div>
 </form>
 {{#if submitted}}
 	Thanks for contributing to the question bank!

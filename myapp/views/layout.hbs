@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel = 'stylesheet' href = '/stylesheets/bootstrap.min.css'/>
     <script src="/javascripts/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/bootstrap.min.js"></script>
+
+    
     <title>JavaSquiz</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
@@ -11,7 +16,7 @@
 
   <div>
 	{{#if user}}
-	  Welcome {{user.username}}! | <a href="logout">Log out</a> | <a href= "/"> Home </a> | <a href = "add"> Add Questions </a> | <a href = "questions"> Take the quiz! </a>
+	  Welcome {{user.username}}! | <a href="logout">Log out</a> | <a href= "/">Home</a> | <a href = "add">Add Questions</a> | <a href = "questions">Take the quiz!</a>
 	{{/if}}
 	</div>
     {{{body}}}

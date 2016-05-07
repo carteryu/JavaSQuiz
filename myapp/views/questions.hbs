@@ -7,8 +7,8 @@
     <form id = "submit-form" action="" method="POST">
         Question: {{title}}
     <div class = "answer"> 
-    	Answer: <input type="text" placeholder="Type answer here!" name="answer" id="answer{{@index}}"> 
-    	<input type="submit" class="submit-answer" data-answer="answer{{@index}}" data-box="questionbox{{@index}}" id="{{_id}}"> 
+    	Answer: <input type="text" placeholder="Type answer here!" name="answer" id="answer{{@index}}" required autofocus /> 
+    	<input type="submit" class="submit-answer" data-answer="answer{{@index}}" data-box="questionbox{{@index}}" id="{{_id}}">  
     </div> 
     </form>
     </div>

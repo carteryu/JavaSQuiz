@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+:disabled{
+	color: gray;
+}
+
+h3{
+	font-family: 'Slabo 27px', serif;
+}
