@@ -11,5 +11,4 @@ describe('Index', function() {
       assert.equal('Apple', question.answer);
     });
   });
-
 });

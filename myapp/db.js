@@ -2,7 +2,9 @@ var mongoose = require('mongoose'),
     URLSlugs = require('mongoose-url-slugs');
 var passportLocalMongoose = require('passport-local-mongoose');
 
-var UserSchema = new mongoose.Schema({ });
+var UserSchema = new mongoose.Schema({ 
+	name: String
+});
 
 
 var Question = new mongoose.Schema({
@@ -10,13 +12,13 @@ var Question = new mongoose.Schema({
 	answer: String,
 	explaination: String
 });
+
 var Score = new mongoose.Schema({
-    username: String,
-	score: Number,
-	date: {type: Date, default: Date.now},
+    userName: String,
+    userAnswer: String,
+	score: Number
 });
 
-// Question.plugin(URLSlugs('title'));
 UserSchema.plugin(passportLocalMongoose);
 
 mongoose.model('User', UserSchema);

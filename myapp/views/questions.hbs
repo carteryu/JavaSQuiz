@@ -1,15 +1,16 @@
-Displaying questions from database:
 
-<div class = "questionbox">
+<h2>Displaying questions. Don't worry about spaces, capitalization, etc. </h2>
+
 {{#each questions}}
-	<br>
-    <form action="/questions" method="POST">
-    Question: {{title}}
+    <div id = "questionbox{{@index}}">
+    <br>
+    <form id = "submit-form" action="" method="POST">
+        Question: {{title}}
     <div class = "answer"> 
-    	Answer: <input type="text" placeholder="Type answer here!" name="answer"/> 
-    	<input type="hidden" name="id" value = {{_id}}>
-    	<input type="submit"/> 
+    	Answer: <input type="text" placeholder="Type answer here!" name="answer" id="answer{{@index}}"> 
+    	<input type="submit" class="submit-answer" data-answer="answer{{@index}}" data-box="questionbox{{@index}}" id="{{_id}}"> 
+    </div> 
+    </form>
     </div>
-   </form>
 {{/each}}
-</div>
+

@@ -3,13 +3,16 @@ require('../auth');
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var bodyParser = require('body-parser')
 
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Question = mongoose.model('Question');
+var Score = mongoose.model('Score');
 
 var validator = require('express-validator');
-/* GET home page. */
+var un = ""
+
 router.get('/', function(req, res, next) {
   res.render('index');
 });
@@ -18,25 +21,19 @@ router.get('/login', function(req, res) {
   res.render('login');
 });
 
+
 router.post('/login', function(req,res,next) {
-  // NOTE: use the custom version of authenticate so that we can
-  // react to the authentication result... and so that we can
-  // propagate an error back to the frontend without using flash
-  // messages
   passport.authenticate('local', function(err,user) {
     if(user) {
-      // NOTE: using this version of authenticate requires us to
-      // call login manually
+      un = user;
       req.logIn(user, function(err) {
         res.redirect('/');
       });
     } else {
-      res.render('login', {message:'Your login or password is incorrect.'});
+      res.render('login', {message:'Your login or password is incorrect. Have you registered?'});
     }
   })(req, res, next);
-  // NOTE: notice that this form of authenticate returns a function that
-  // we call immediately! See custom callback section of docs:
-  // http://passportjs.org/guide/authenticate/
+
 });
 
 router.get('/register', function(req, res) {
@@ -44,14 +41,13 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-  User.register(new User({username:req.body.username}), 
+  User.register(new User({username:req.body.username, name:req.body.name}), 
       req.body.password, function(err, user){
     if (err) {
-      // NOTE: error? send message back to registration...
-      res.render('register',{message:'Your registration information is not valid'});
+
+      res.render('register',{message:'Your registration information is invalid! :('});
     } else {
-      // NOTE: once you've registered, you should be logged in automatically
-      // ...so call authenticate if there's no error
+
       passport.authenticate('local')(req, res, function() {
         res.redirect('/');
       });
@@ -72,18 +68,34 @@ router.get('/questions', function(req,res,next){
 });
 
 
-router.post('/questions', function(req,res,next){
-  var answer = req.body.answer;
-  var id = req.body.id;
-  console.log(answer);
-  console.log(id);
-  res.redirect('questions');
-});
+// function normalize(string){
+//   var result = string.toLowerCase();
+//   return result;
+// }
+// router.post('/questions', function(req,res,next){
+//   var userAnswer = req.body.answer;
+//   var id = req.body.id;
+
+//   console.log(userAnswer);
+//   console.log(id);
+//   Question.findOne({'_id':id}, function(err,question,count){
+//     console.log(question);
+//     var correct = question.answer;
+//     if (normalize(correct)===normalize(userAnswer)){
+//       res.render('test', {ans : "Correct!"})
+//     }
+//     else{
+//       res.render('test', {ans : "Wrong!"});
+//     }
+//   })
+  
+// });
 
 router.get('/add', function(req,res,next){
 	res.render('add');
 });
 
+//separating this for testing purposes
 function addQuestion(question, answer, explaination) {
   var q = new Question({
     title:question,
@@ -99,9 +111,44 @@ router.post('/add', function(req, res, next){
     var explaination = req.body.explaination;
     var q = addQuestion(question, answer, explaination);
     q.save(function(err,list,count){
-      res.redirect(303, 'add');
+      res.render('add', {'submitted' : list});
+      //res.json(list);
+      // if(err) {
+      //   res.json({error: true});
+      // } else {
+      //   res.json(add);
+      // }
     })
 });
+
+
+//display all questions
+router.get('/api/questions', function(req,res){
+  Question.find(function(err,questions,count){
+    res.json(questions);
+  })
+});
+
+
+//display the one filtered question
+router.get('/api/question', function(req,res){
+  var id = req.query.id;
+  Question.findOne({'_id' : id}, function(err,question,count){
+    res.json(question);
+  })
+});
+
+// router.post('/api/question', function(req,res){
+//   (new Score({
+//       userName: un,
+//       userAnswer: req.body.answer,
+//       score: 0
+//   })).save(function(err, score, count) {
+//     res.json(score);
+//   });
+// });
+
+
 
 
 
