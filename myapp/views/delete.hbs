@@ -1,0 +1,17 @@
+<h2> Deleting a question</h2>
+<h5> Is there a question you think is inappropriate? Type it in the form below and every question in the database with that name will be removed. </h5>
+<form method="POST" action="/delete">
+	<div> Question name: <input type = "text" name = "title" required autofocus/> </div>
+	<br>
+	<div> <input type = "submit" value = "Submit to database!"/> </div>
+</form>
+{{#if error}}
+ 	<br>
+	There doesn't appear to be a question with that name. Please try again.
+{{/if}}
+{{#if submitted}}
+	<br>
+	Thanks for your contribution. All question names that match "{{body}}" are deleted!
+	<br>
+	When you're ready, take the <a href="questions">quiz</a>!
+{{/if}}
