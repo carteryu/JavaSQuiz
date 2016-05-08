@@ -45,11 +45,29 @@ function main(){
 
 			})
 			req.send();
+
+			// var req2= new XMLHttpRequest();
+			// var url2 = 'http://localhost:3000/api/score' + "?score=" + score;
+			// req2.open("POST", url2, true);
+
+			// req2.addEventListener('load', function(evt){
+			// 	var data = JSON.parse(req2.responseText);
+			// 	console.log(data)
+
+			// }
+			// req2.send();
+
 		});
 	};
 };
 
 function normalize(string){
-	var ret = string.toLowerCase().replace(/ /g, '').replace(/[^A-Za-z0-9]/g, '');
-	return ret;
+	string = string.split(" ");
+	string.forEach(function(ele, ind){
+		ele = ele.toLowerCase();
+		console.log(ele);
+		string[ind] = ele;
+	});
+	string = string.join(" ");
+	return string;
 }

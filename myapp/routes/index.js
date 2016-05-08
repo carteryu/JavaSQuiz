@@ -11,7 +11,7 @@ var Question = mongoose.model('Question');
 var Score = mongoose.model('Score');
 
 var validator = require('express-validator');
-var un = ""
+var un = "";
 
 
 router.get('/', function(req, res, next) {
@@ -46,9 +46,9 @@ router.post('/register', function(req, res) {
       req.body.password, function(err, user){
     if (err) {
 
-      res.render('register',{message:'Your registration information is invalid! :('});
+      res.render('register',{message:'Username is taken!'});
     } else {
-
+      un=user;
       passport.authenticate('local')(req, res, function() {
         res.redirect('/');
       });
@@ -61,11 +61,16 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
-
+//test to see if backend is connected and if we can display our question bank
+function displayAllQuestions(callback){
+  Question.find(function(err,allquestions,count){
+    callback(allquestions);
+  });
+}
 router.get('/questions', function(req,res,next){
-	Question.find(function(err,allquestions,count){
-		res.render('questions', {questions : allquestions});
-	})
+  displayAllQuestions(function(questions){
+		res.render('questions', {questions : questions});
+	});
 });
 
 
@@ -89,7 +94,6 @@ router.get('/questions', function(req,res,next){
 //       res.render('test', {ans : "Wrong!"});
 //     }
 //   })
-  
 // });
 
 router.get('/add', function(req,res,next){
@@ -112,7 +116,12 @@ router.post('/add', function(req, res, next){
     var explaination = req.body.explaination;
     var q = addQuestion(question, answer, explaination);
     q.save(function(err,list,count){
-      res.render('add', {'submitted' : list});
+      if (err){
+        res.render('add', {error: true});
+      }
+      else {
+        res.render('add', {'submitted' : list});
+      }
       //res.json(list);
       // if(err) {
       //   res.json({error: true});
@@ -126,12 +135,17 @@ router.post('/add', function(req, res, next){
 //display all questions
 router.get('/api/questions', function(req,res){
   Question.find(function(err,questions,count){
-    res.json(questions);
-  })
+    if (err){
+      res.json({error:true});
+    }
+    else {
+      res.json(questions);
+   }
+  });
 });
 
 //testing this function to see if res.json gives us what we want.
-function matchID(id, callback) {
+function matchID(id, callback) { 
   Question.findOne({'_id' : id}, function(err,question,count){
     callback(question);
   });
@@ -144,20 +158,47 @@ router.get('/api/question', function(req,res){
   });
 });
 
-// router.post('/api/question', function(req,res){
+// router.get('/api/score', function(req,res){
+//   Score.find(function(err,score,count){
+//     res.json(score);
+//   })
+// })
+// router.post('/api/score', function(req,res){
 //   (new Score({
 //       userName: un,
-//       userAnswer: req.body.answer,
 //       score: 0
 //   })).save(function(err, score, count) {
 //     res.json(score);
 //   });
 // });
 
+router.get('/delete', function(req,res){
+  res.render('delete')
+});
+
+router.post('/delete', function(req,res){
+  Question.remove({title: req.body.title}, function(err,questions,count) {
+    if (err) {
+      res.render('delete',{error:true});
+    }
+    else {
+      if(questions.result.n ==0){
+        res.render('delete',{error:true});
+      }else{ 
+        res.render('delete',{submitted: questions.result.n, body: req.body.title});
+
+      }
+    }
+});
+});
+
 
 
 
 module.exports = router;
+
+//exporting these functions for testing purposes
 module.exports.addQuestion = addQuestion;
 module.exports.matchID = matchID;
+module.exports.displayAllQuestions = displayAllQuestions;
 

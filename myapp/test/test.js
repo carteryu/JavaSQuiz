@@ -1,6 +1,7 @@
 var assert = require('chai').assert;
 var addQuestion = require('../routes/index').addQuestion;
 var matchID = require('../routes/index').matchID;
+var displayAllQuestions = require('../routes/index').displayAllQuestions;
 
 
 describe('Index', function() {
@@ -15,8 +16,8 @@ describe('Index', function() {
 });
 
 describe('Index', function(){
-    describe('#matchID(id,res)', function() {
-        it('should successfully get the data so that we can verify user submission', function(){
+    describe('#matchID(id,callback)', function() {
+        it('should return the data so that we can verify user submission', function(){
             matchID('572d4617435be0dc3362b9c7', function(question) {
                 assert.property(question, '_id');
             });
@@ -24,7 +25,13 @@ describe('Index', function(){
     });
 });
 
-//todo
-//1. write 2 more mocha tests
-//3. validation
-//4. redeploy and redo readme
+describe('Index', function(){
+	describe('#displayAllQuestions(callback)',function(){
+		it('should return all the questions, ready to be rendered', function(){
+			displayAllQuestions(function(q){
+				assert.property(q, 'title');
+			});
+		});
+	});
+});
+

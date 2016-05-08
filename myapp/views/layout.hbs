@@ -2,23 +2,59 @@
 <html>
   <head>
     <link rel = 'stylesheet' href = '/stylesheets/bootstrap.min.css'/>
+    <link rel = 'stylesheet' href = '/stylesheets/simple-sidebar.css'/>
     <script src="/javascripts/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/bootstrap.min.js"></script>
 
     
     <title>JavaSquiz</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
     <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
   </head>
   <body>
   <div>
+  <div id="wrapper">
 
-  <div>
 	{{#if user}}
-	  Welcome {{user.username}}! | <a href="logout">Log out</a> | <a href= "/">Home</a> | <a href = "add">Add Questions</a> | <a href = "questions">Take the quiz!</a>
+          <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    
+                    Welcome {{user.username}}!
+                   
+                </li>
+                <li>
+                    <a href= "/">Home</a> 
+                </li>
+                <li>
+                    <a href = "questions">Take the quiz!</a>
+                </li>
+                <li>
+                    <a href = "add">Add Questions</a>
+                </li>
+                <li>
+                    <a href = "delete">Delete Questions</a> 
+                </li>
+
+                <li>
+                    <a href="logout">Log out</a> 
+                </li>
+            </ul>
+        </div>
 	{{/if}}
+
 	</div>
-    {{{body}}}
+          <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="floatContainer">
+                        {{{body}}}
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
   </body>
 </html>

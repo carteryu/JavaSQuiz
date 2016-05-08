@@ -1,11 +1,10 @@
-var mongoose = require('mongoose'),
-    URLSlugs = require('mongoose-url-slugs');
+var mongoose = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
 
+//username and password provided by passport
 var UserSchema = new mongoose.Schema({ 
 	name: String
 });
-
 
 var Question = new mongoose.Schema({
 	title: String,	
@@ -15,7 +14,6 @@ var Question = new mongoose.Schema({
 
 var Score = new mongoose.Schema({
     userName: String,
-    userAnswer: String,
 	score: Number
 });
 
