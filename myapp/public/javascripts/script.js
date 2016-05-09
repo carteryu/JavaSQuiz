@@ -65,9 +65,9 @@ function normalize(string){
 	string = string.split(" ");
 	string.forEach(function(ele, ind){
 		ele = ele.toLowerCase();
-		console.log(ele);
 		string[ind] = ele;
 	});
 	string = string.join(" ");
+	string = string.replace(/ /g, '');
 	return string;
 }
