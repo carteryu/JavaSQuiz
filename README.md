@@ -1,5 +1,4 @@
-
-# JSquizzy
+# JavaSquizzy
 
 ## Overview
 
@@ -7,10 +6,9 @@ Remembering all these obscure JavaScript concepts before the exam is waaaaaay to
 
 JSquizzy is a web app that will allow users to review all the important and hard to remember concepts about Javascript with relative ease. For every concept, there will be a "flashcard" where the user can input an answer (multiple choice or through a console-like feature).
 
-
 ## Data Model
 
-Minimally, we'll have to store questions, answers, users, and comments stored in MongoDB
+Minimally, we'll have to store questions, answers, and users stored in MongoDB
 
 * correct questions/answers of each user are kept track
 * comments are stored and then displayed in a list/discussion board-esque fashion
