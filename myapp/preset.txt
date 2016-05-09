@@ -1,0 +1,15 @@
+MongoDB is a ____-oriented database
+Document
+Document-oriented databases are one of the main categories of NoSQL databases and the popularity of the term "document-oriented database" has grown with the use of the term NoSQL itself.
+
+A ____ represents an operation that hasn't completed yet, but is expected in the future.
+Promise
+The Promise object is used for deferred and asynchronous computations.
+
+Express automatically handles trailing slashes. (True/False?)
+True
+
+Name the node module that populates req.body with data parsed from http request body
+body-parser
+It's a node.js body parsing middleware.
+
