@@ -1,14 +1,13 @@
-# JavaSquizzy
+# JavaSquiz
 
 ## Overview
 
-Remembering all these obscure JavaScript concepts before the exam is waaaaaay too difficult (who the heck thought of making typeof NaN actually a number???). Also, trying to dig through your books/slides to find that kind of stuff while stressed is just a recipe for disaster. Soo... that's where JSquizzy comes in!
+Remembering all these obscure JavaScript concepts before the exam is waaaaaay too difficult (who the heck thought of making typeof NaN actually a number???). Also, trying to dig through your books/slides to find that kind of stuff while stressed is just a recipe for disaster. Soo... that's where JavaSquiz comes in.
 
-JSquizzy is a web app that will allow users to review all the important and hard to remember concepts about Javascript with relative ease. For every concept, there will be a "flashcard" where the user can input an answer (multiple choice or through a console-like feature).
+JavaSquiz is a web app that allows users to review all the important and hard to remember concepts about Javascript with relative ease.
 
 ## Data Model
-
-Minimally, we'll have to store questions, answers, and users stored in MongoDB
+Questions, answers, and users are stored in MongoDB
 
 * correct questions/answers of each user are kept track
 * comments are stored and then displayed in a list/discussion board-esque fashion
