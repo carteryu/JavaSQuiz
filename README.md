@@ -2,7 +2,7 @@
 
 ## Overview
 
-Remembering all these obscure JavaScript concepts before the exam is waaaaaay too difficult (who the heck thought of making typeof NaN actually a number???). Also, trying to dig through your books/slides to find that kind of stuff while stressed is just a recipe for disaster. Soo... that's where JavaSquiz comes in.
+Remembering all these obscure JavaScript concepts before the exam is way too difficult (who the heck thought of making typeof NaN actually a number??). Also, trying to dig through your books/slides to find that kind of stuff the night before an exam or interview is just a recipe for disaster. So that's where JavaSquiz comes in.
 
 JavaSquiz is a web app that allows users to review all the important and hard to remember concepts about Javascript with relative ease.
 
@@ -45,27 +45,8 @@ var Item = new mongoose.Schema({
 	answer: {type: String, required: true},
 });
 
-// more will probably be added later as seen fit
+
 ```
 
-## Wireframes
-I drew them but I have trouble uploading it for some reason. I'll have it figured out by the next milestone. But imagine a simple facebook auth that looks like this:
 
-
-![list create](documentation/userauth.png)
-
-And then a button that takes you to take the quiz
-
-## Research Topics
-
-** THESE ARE NOT FINALIZED **
-* (3 points) Integrate user authentication
-    * Will use FB Connect
-    * Probably I can find documentation somewhere.
-* (3 points) Automated functional testing for all of your routes using any of the following:
-    * Will be using Selenium to run unit testing
-* (1 point) Use a CSS framework throughout your site, use a reasonable of customization of the framework (don't just use stock Bootstrap - minimally configure a theme):
-    * Probably will use Foundation
-* ... for total of 7 points 
-    * Again I will likely update this as the next milestone comes and I work more on this.
 
